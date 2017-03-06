@@ -23,6 +23,8 @@ import (
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 )
 
+import "gopkg.in/jasmira/learn-chaincode.v2/finished"
+
 // SimpleChaincode example simple Chaincode implementation
 type SimpleChaincode struct {
 }

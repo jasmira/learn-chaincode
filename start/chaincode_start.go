@@ -23,8 +23,6 @@ import (
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 )
 
-import "gopkg.in/jasmira/learn-chaincode.v2/finished"
-
 // SimpleChaincode example simple Chaincode implementation
 type SimpleChaincode struct {
 }
@@ -75,7 +73,7 @@ func (t *SimpleChaincode) Query(stub *shim.ChaincodeStubInterface, function stri
 		//fmt.Println("hi there " + //function)						//error
 		//return nil, nil;
 	//}
-	
+
 	// Handle different functions
 	if function == "read" {			//read a variable
 		return t.read(stub, args)
@@ -90,11 +88,11 @@ func (t *SimpleChaincode) write(stub *shim.ChaincodeStub, args []string) ([]byte
 	var name, value string
 	var err error
 	fmt.Println("running write()")
-	
+
 	if len(args) != 2 {
 		return nil, errors.New("Incorrect number of arguments. Expecting 2. name od the variable and value to set")
 	}
-	
+
 	name = args[0]  //rename for fun
 	value = args[1]
 	err = stub.PutState(name, []byte(value)) //write the variable into the chaincode state
@@ -108,17 +106,17 @@ func (t *SimpleChaincode) write(stub *shim.ChaincodeStub, args []string) ([]byte
 func (t *SimpleChaincode) read(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
 	var name, jsonResp string
 	var err error
-	
+
 	if len(args) != 1 {
 		return nil, errors.New("Incorrect number of arguments. Expecting name of the var to query")
 	}
-	
+
 	name = args[0]
 	valAsbytes, err := stub.GetState(name)
 	if err != nil {
 		jsonResp = "{\"Error\":\"Failed to get state for " + name + "\"}"
 		return nil, errors.New(jsonResp)
 	}
-	
+
 	return valAsbytes, nil
 }

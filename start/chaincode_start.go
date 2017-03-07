@@ -84,7 +84,7 @@ func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
 }
 
 // add in our write function
-func (t *SimpleChaincode) write(stub shim.ChaincodeStub, args []string) ([]byte, error) {
+func (t *SimpleChaincode) write(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
 	var name, value string
 	var err error
 	fmt.Println("running write()")
@@ -103,7 +103,7 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStub, args []string) ([]byte,
 }
 
 // add in our read function
-func (t *SimpleChaincode) read(stub shim.ChaincodeStub, args []string) ([]byte, error) {
+func (t *SimpleChaincode) read(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
 	var name, jsonResp string
 	var err error
 

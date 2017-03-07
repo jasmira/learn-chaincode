@@ -90,7 +90,7 @@ func (t *SimpleChaincode) write(stub *shim.ChaincodeStub, args []string) ([]byte
 	fmt.Println("running write()")
 
 	if len(args) != 2 {
-		return nil, errors.New("Incorrect number of arguments. Expecting 2. name od the variable and value to set")
+		return nil, errors.New("Incorrect number of arguments. Expecting 2. name of the variable and value to set")
 	}
 
 	name = args[0]  //rename for fun
@@ -99,7 +99,7 @@ func (t *SimpleChaincode) write(stub *shim.ChaincodeStub, args []string) ([]byte
 	if err != nil {
 		return nil, err
 	}
-	retun nil, nil
+	return nil, nil
 }
 
 // add in our read function
